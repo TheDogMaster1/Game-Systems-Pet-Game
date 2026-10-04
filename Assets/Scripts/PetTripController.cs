@@ -8,7 +8,7 @@ public class PetTripController : MonoBehaviour
     private Animator animator;
 
     [SerializeField]
-    private int timeToPass = 20;
+    private float timeToPass = 20;
 
     [SerializeField, Range(0, 100)]
     private int tripChance = 10;
@@ -32,7 +32,6 @@ public class PetTripController : MonoBehaviour
             if (tripNumber <= tripChance)
             {
                 Debug.Log("Tripped D:");
-                animator.SetBool("Walking", false);
                 tripEvent?.Invoke();
             }
 
