@@ -10,12 +10,12 @@ public class AnimationSettings : MonoBehaviour
 
     public void SetParameterToTrue(string parName)
     {
-        _animator.SetBool(parName, true);
+        if (!_animator.GetBool(parName)) _animator.SetBool(parName, true);
     }
 
     public void SetParameterToFalse(string parName)
     {
-        _animator.SetBool(parName, false);
+        if (_animator.GetBool(parName)) _animator.SetBool(parName, false);
     }
 
     public void SetRootMotionToTrue()
@@ -25,5 +25,11 @@ public class AnimationSettings : MonoBehaviour
     public void SetRootMotionToFalse()
     {
         _animator.applyRootMotion = false;
+    }
+
+    public void SetObjectToInactive(string objectName)
+    {
+        GameObject obj = GameObject.Find(objectName);
+        obj.SetActive(false);
     }
 }

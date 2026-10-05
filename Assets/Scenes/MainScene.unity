@@ -2615,7 +2615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &758438803
 Transform:
   m_ObjectHideFlags: 0
@@ -9136,6 +9136,30 @@ MonoBehaviour:
           m_FloatArgument: 50
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 758438802}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1353699154}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Eat
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1022759360
 MonoBehaviour:
@@ -20423,7 +20447,7 @@ Transform:
   m_GameObject: {fileID: 1353699152}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.0091078775, z: -0, w: 0.9999585}
-  m_LocalPosition: {x: -3, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20444,7 +20468,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: caf089cf4c4924f9188b74f5b515f1dc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -20467,34 +20491,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   timeToPass: 9.5
-  tripChance: 0
+  tripChance: 100
   tripEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353699156}
-        m_TargetAssemblyTypeName: AnimationParBoolChanger, Assembly-CSharp
-        m_MethodName: SetParameterToFalse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 100
-          m_StringArgument: Walking
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1353699156}
-        m_TargetAssemblyTypeName: AnimationParBoolChanger, Assembly-CSharp
-        m_MethodName: SetParameterToFalse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 100
-          m_StringArgument: Wagging
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1353699154}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -21545,6 +21545,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1353699156}
+        m_TargetAssemblyTypeName: AnimationSettings, Assembly-CSharp
+        m_MethodName: SetRootMotionToFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1353699154}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: Play
