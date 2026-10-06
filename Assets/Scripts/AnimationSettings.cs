@@ -8,6 +8,14 @@ public class AnimationSettings : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    //private void Update()
+    //{
+    //    if (!_animator.GetBool("Walking") && Mathf.Abs(transform.position.y - 0.6f) > 0.01)
+    //    {
+    //        transform.Translate(new Vector3(0, Mathf.Sign(transform.position.y - 0.6f) * -5f * Time.deltaTime, 0));
+    //    }
+    //}
+
     public void SetParameterToTrue(string parName)
     {
         if (!_animator.GetBool(parName)) _animator.SetBool(parName, true);

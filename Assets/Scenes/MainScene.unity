@@ -2694,6 +2694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 805260327}
   - component: {fileID: 805260328}
+  - component: {fileID: 805260329}
   m_Layer: 0
   m_Name: Sadness
   m_TagString: Untagged
@@ -2748,6 +2749,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &805260329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805260326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6b68ec8d8d29c4ca66cd1a61cc8f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkedVariableName: Hunger
+  _animator: {fileID: 1353699154}
+  intToCheck: 5
+  newChangePerSecond: 5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9054,6 +9071,7 @@ GameObject:
   - component: {fileID: 1022759361}
   - component: {fileID: 1022759360}
   - component: {fileID: 1022759359}
+  - component: {fileID: 1022759362}
   m_Layer: 5
   m_Name: FeedButton
   m_TagString: Untagged
@@ -9199,6 +9217,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022759357}
   m_CullTransparentMesh: 1
+--- !u!114 &1022759362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022759357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1890a9e01bb4f204ba52d9156aa1019a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petVariable: {fileID: 805260328}
+  numberStop: 80
 --- !u!1 &1073459972
 GameObject:
   m_ObjectHideFlags: 0
@@ -20447,14 +20479,14 @@ Transform:
   m_GameObject: {fileID: 1353699152}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.0091078775, z: -0, w: 0.9999585}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0.005, y: 0.6, z: 0.302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667682644}
   - {fileID: 561373220}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 1.044, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &1353699154
 Animator:
   serializedVersion: 7
@@ -20490,21 +20522,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  timeToPass: 9.5
-  tripChance: 100
+  timeToPass: 2
+  tripChance: 1
   tripEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1353699154}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tripped
+          m_StringArgument: Trip
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 805260328}
@@ -21545,9 +21577,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353699156}
-        m_TargetAssemblyTypeName: AnimationSettings, Assembly-CSharp
-        m_MethodName: SetRootMotionToFalse
+      - m_Target: {fileID: 1022759359}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1353699154}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: set_applyRootMotion
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1353699155}
+        m_TargetAssemblyTypeName: PetTripController, Assembly-CSharp
+        m_MethodName: PutPetOnGround
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

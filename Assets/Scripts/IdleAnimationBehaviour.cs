@@ -5,6 +5,7 @@ public class IdleAnimationBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.applyRootMotion = false;
         animator.SetBool("Wagging", true);
         animator.SetBool("Walking", true);
     }
