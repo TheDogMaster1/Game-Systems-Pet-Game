@@ -5,13 +5,14 @@ public class PetVariableSettingsChanger : MonoBehaviour
     private PetVariable petVariable;
 
     [SerializeField]
-    private string checkedVariableName;
-
-    [SerializeField]
     private Animator _animator;
 
     [SerializeField]
-    private int intToCheck = 0;
+    private string parameter;
+
+    public enum AnimationState { sleep, sulk }
+
+    public AnimationState state;
 
     [SerializeField]
     private int newChangePerSecond = 0;
@@ -21,15 +22,44 @@ public class PetVariableSettingsChanger : MonoBehaviour
     {
         petVariable = GetComponent<PetVariable>();
     }
-    void Update()
+
+    private void Update()
     {
-        if (_animator.GetFloat(checkedVariableName) <= intToCheck)
+        if (_animator == null) return;
+        if (_animator.GetFloat(parameter) <= 5)
+        {
+            ChangePerSecond(false);
+        }
+        else
+        {
+            ChangePerSecond(true);
+        }
+    }
+
+    private void ChangePerSecond(bool pBool)
+    {
+        if (!pBool)
         {
             petVariable.changePerSecond = newChangePerSecond;
         }
         else
         {
             petVariable.changePerSecond = 0;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (state == AnimationState.sleep)
+        {
+            SleepAnimationBehaviour.OnSleep += ChangePerSecond;
+        }
+    }
+    private void OnDisable()
+    {
+        if (state == AnimationState.sleep)
+        {
+            SleepAnimationBehaviour.OnSleep -= ChangePerSecond;
         }
     }
 }

@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class SleepAnimationBehaviour : StateMachineBehaviour
 {
-    public static event Action onSleepEnter;
-
-    public static event Action onSleepExit;
+    public static event Action<bool> OnSleep;
 
     [SerializeField]
     private string petVariableName;
@@ -21,7 +19,7 @@ public class SleepAnimationBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onSleepEnter?.Invoke();
+        OnSleep?.Invoke(true);
         petVariable.changePerSecond *= -1;
     }
 
@@ -34,7 +32,7 @@ public class SleepAnimationBehaviour : StateMachineBehaviour
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onSleepExit?.Invoke();
+        OnSleep?.Invoke(false);
         petVariable.changePerSecond *= -1;
     }
 

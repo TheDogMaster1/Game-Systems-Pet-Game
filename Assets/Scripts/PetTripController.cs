@@ -21,6 +21,8 @@ public class PetTripController : MonoBehaviour
     [SerializeField]
     private UnityEvent tripEvent;
 
+    private bool sleeping = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -28,7 +30,7 @@ public class PetTripController : MonoBehaviour
 
     void Update()
     {
-        if (animator.GetFloat("Sadness") < 20 && animator.GetFloat("Hunger") > 50) timer += Time.deltaTime;
+        if (animator.GetFloat("Sadness") < 20 && animator.GetFloat("Hunger") > 50 && !sleeping) timer += Time.deltaTime;
 
         if (timer > timeToPass)
         {
@@ -45,8 +47,23 @@ public class PetTripController : MonoBehaviour
         }
     }
 
+    public void ChangeIsSleeping(bool pBool)
+    {
+        sleeping = pBool;
+    }
+
     public void PutPetOnGround()
     {
         transform.position = new Vector3(transform.position.x, 0.6f, transform.position.z);
+    }
+
+    private void OnEnable()
+    {
+        SleepAnimationBehaviour.OnSleep += ChangeIsSleeping;
+    }
+
+    private void OnDisable()
+    {
+        SleepAnimationBehaviour.OnSleep -= ChangeIsSleeping;
     }
 }
